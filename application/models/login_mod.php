@@ -23,7 +23,7 @@ class login_mod extends CI_Model
     public function update_flag($username)
    {
 
-   	  $this->db->query('UPDATE login SET flogin= '0' WHERE username =\''.$username.'\'');
+   	  $this->db->query('UPDATE login SET flogin= \'0\' WHERE username =\''.$username.'\'');
    	  
    }
 }

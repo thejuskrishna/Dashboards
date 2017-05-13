@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 11, 2017 at 08:02 AM
+-- Generation Time: May 13, 2017 at 01:56 PM
 -- Server version: 10.1.21-MariaDB
--- PHP Version: 5.6.30
+-- PHP Version: 7.1.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -30,7 +30,7 @@ CREATE TABLE `login` (
   `username` varchar(256) NOT NULL,
   `password` varchar(256) NOT NULL,
   `email` varchar(256) NOT NULL,
-  `flogin` bit(1) NOT NULL
+  `flogin` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -38,7 +38,7 @@ CREATE TABLE `login` (
 --
 
 INSERT INTO `login` (`username`, `password`, `email`, `flogin`) VALUES
-('ashik', '12345', 'ashikalias@gmail.com', b'0');
+('ashik', '12345', 'ashikalias@gmail.com', 0);
 
 --
 -- Indexes for dumped tables
