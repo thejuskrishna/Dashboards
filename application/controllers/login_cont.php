@@ -20,18 +20,21 @@ public function index()
 		{	
 			$ret=$this->login_mod->check($username);
 			
-			echo $ret->username;
-			echo $ret->password;
-			echo $ret->flogin;
 			if($ret->flogin==1)
 			{
 				$ret=$this->login_mod->update_flag($username);
+				$this->session->set_userdata($username.$password);
+				$this->load->view('firstlogin');
 			}
 			
 
-			//redirect(base_url().'index.php/studentsearch/asdfg/'.$usid);	
+			//redirect(base_url().'index.php/login_cont/checklogin/');	
 		}
 		
+	}
+	public function resetpassword()
+	{
+		$this->login_mod->updatepassword($username,$password);
 	}
 	public function verifyuser()
 	{

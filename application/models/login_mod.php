@@ -26,5 +26,12 @@ class login_mod extends CI_Model
    	  $this->db->query('UPDATE login SET flogin= \'0\' WHERE username =\''.$username.'\'');
    	  
    }
+   public function updatepassword($username,$password)
+   {
+    $this->db->query('UPDATE login SET password=\''.$password.'\' WHERE username=\''.$username.'\'');
+   }
+
 }
+
+?>
 
