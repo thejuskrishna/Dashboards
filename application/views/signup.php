@@ -51,40 +51,45 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     <div class="panel-heading">
                         <h3 class="panel-title">Please Sign In</h3>
                     </div>
-                    <?php echo validation_errors();?>
-                    <?php echo form_open( base_url().'index.php/login_cont/checklogin'); ?>
-                    <div class="panel-body">
-                        <form role="form">
-                            <fieldset>
+                     <?php echo validation_errors();?>
+                        <?php echo form_open(base_url().'index.php/signup/checksignup'); ?>
+                        <div class="">
+                            <form role="form" action="">
+                                
                                 <div class="form-group">
-                                    <input class="form-control" placeholder="user name" name="username" type="type"  autofocus>
+                                    <label>Name</label>
+                                    <input name= "name" class="form-control">
+                                </div>
+                                 <div class="form-group">
+                                    <label>username</label>
+                                    <input name= "username" class="form-control" >
                                 </div>
                                 <div class="form-group">
-                                    <input class="form-control" placeholder="Password" name="password" type="password" value="">
+                                    <label> Password</label>
+                                    <input name= "pass1" type="Password" class="form-control" >
+                                </div>
+                                <div class="form-group">
+                                    <label>Retype Password</label>
+                                    <input name= "pass2" type="Password" class="form-control" >
+                                </div>
+                                <div class="form-group">
+                                    <label>E-mail id</label>
+                                    <input name= "email" class="form-control" >
                                 </div>
                                
-                                <!--
-                                <div class="checkbox">
-                                    <label>
-                                        <input name="remember" type="checkbox" value="Remember Me">Remember Me
-                                    </label>
+                                
+                                
+                                <div class="col-lg-6">
+                                <button type="submit" class="btn btn-lg btn-success btn-block">signup</button>
                                 </div>
-                                -->
-                                <!-- Change this to a button or input when using this as a form -->
-                                <input  name="login" class="btn btn-lg btn-success btn-block" value="sign in" type="submit">
-                            </fieldset>
-                        </form>
+                                <div class="col-lg-6">
+                                <button type="reset" class="btn btn-lg btn-success btn-block">Reset </button>
+                                </div>
+                            </form>
+                        </div>
 
-                    </div>
                 </div>
-                    <?php echo form_open( base_url().'index.php/signup/loadview'); ?>
-                
-                    <form role="form" >
-                        <fieldset>
-                            <div class="form-group">  
-                            <input  name="login" class="btn btn-lg btn-success btn-block" value="Dont have an account..sign up" type="submit">
-                        </fieldset>
-                    </form>
+                   
                 
             </div>
         </div>
