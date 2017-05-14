@@ -1,5 +1,11 @@
 <?php
 class signup_cont extends CI_Controller {
+	 function __construct() 
+    {
+        parent::__construct();
+        
+        $this->load->model('signup_mod');
+    }
 public function index()
 	{
 		
@@ -12,12 +18,12 @@ public function index()
 	public function checksignup()
 	{
 		
-		$password=$this->input->post('password');
+		
 		$this->form_validation->set_rules('name','name','required');
 		$this->form_validation->set_rules('username','username','callback_checkusername|required');
 		
 		$this->form_validation->set_rules('pass1','password','required');
-		$this->form_validation->set_rules('pass1','password','matches[pass1]|required');
+		$this->form_validation->set_rules('pass2','retype password','matches[pass1]|required');
 		$this->form_validation->set_rules('email','email id','valid_email|required');
 		if($this->form_validation->run()==false)
 		{
@@ -26,18 +32,24 @@ public function index()
 		
 		else
 		{	
-			//$ret=$this->signup_mod->check($username);
 			
+			$data = array(
+				'username' => $this->input->post('username'),				
+				'password' => $this->input->post('pass1'),
+				'email' => $this->input->post('email'),
+				'flogin' => 1
+				);
 			
 			echo "succ";
-			//redirect(base_url().'index.php/studentsearch/asdfg/'.$usid);	
+			$this->signup_mod->createuser($data);
+			redirect(base_url().'index.php/login_cont/loginview');	
 		}
 		
 	}
 	public function checkusername()
 	{
 		$username=$this->input->post('username');
-		$this->load->model('signup_mod');
+		
 		if($this->signup_mod->check($username))
 		{
 			return true;

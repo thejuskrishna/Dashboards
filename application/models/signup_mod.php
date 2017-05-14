@@ -25,6 +25,11 @@ class signup_mod extends CI_Model
    	  return true;
 
    }
+    public function createuser($data)
+   {
+     $this->db->insert('login', $data);
+
+   }
     public function update_flag($username)
    {
 
