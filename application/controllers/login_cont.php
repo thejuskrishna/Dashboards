@@ -43,9 +43,38 @@ public function index()
 	{
 		$username = $this->session->userdata('username');
 		$password = $this->session->userdata('password');
-		echo $username;
-		echo $password;
-		//$this->login_mod->updatepassword($username,$password);
+
+		$newpass=$this->input->post('password');
+		$this->form_validation->set_rules('password','password','callback_checkpass|required');
+		
+		
+		if($this->form_validation->run()==false)
+		{
+
+			$this->load->view('firstlogin');
+	    }
+		else
+		{
+			echo $newpass;
+		$this->login_mod->update_flag($username);	
+		$this->login_mod->updatepassword($username,$newpass);
+		//redirect()
+	    }
+	}
+	public function checkpass()
+	{
+
+		$newpass=$this->input->post('password');
+		$confirm=$this->input->post('confirm');
+		if($confirm==$newpass)
+			return true;
+		else
+		{
+			return false;
+			$this->form_validation->set_message('checkpass','password dont match');
+		}	
+
+	
 	}
 	public function verifyuser()
 	{

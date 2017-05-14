@@ -56,15 +56,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     <div class="panel-body">
                         <form role="form">
                             <fieldset>
-                                <div class="form-group">
-                                    <input class="form-control" placeholder="old password" name="password" type="password"  value="">
-                                </div>
-                               
+
                                 <div class="form-group">
                                     <input class="form-control" placeholder="new Password" name="password" type="password" value="">
                                 </div>
                                  <div class="form-group">
-                                    <input class="form-control" placeholder="confirm Password" name="password" type="password" value="">
+                                    <input class="form-control" placeholder="confirm Password" name="confirm" type="password" value="">
                                 </div>
                                
                                 <!--
