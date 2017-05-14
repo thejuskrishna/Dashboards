@@ -1,5 +1,5 @@
 <?php
-class login_mod extends CI_Model
+class signup_mod extends CI_Model
 {
 	public function login($username,$password)
 	{
@@ -16,8 +16,13 @@ class login_mod extends CI_Model
 
     public function check($username)
    {
-   	  $res=$this->db->query('SELECT username, password,flogin FROM login WHERE username =\''.$username.'\'');
-   	  return $res->row();
+   	  $query=$this->db->query('SELECT username FROM login WHERE username =\''.$username.'\'');
+      if ($query->num_rows() != 0) 
+      {
+        return false;
+      }
+      else 
+   	  return true;
 
    }
     public function update_flag($username)
@@ -26,12 +31,5 @@ class login_mod extends CI_Model
    	  $this->db->query('UPDATE login SET flogin= \'0\' WHERE username =\''.$username.'\'');
    	  
    }
-   public function updatepassword($username,$password)
-   {
-    $this->db->query('UPDATE login SET password=\''.$password.'\' WHERE username=\''.$username.'\'');
-   }
-
 }
-
-?>
 

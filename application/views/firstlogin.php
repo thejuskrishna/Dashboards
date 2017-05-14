@@ -49,46 +49,40 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <div class="col-md-4">
                 <div class="login-panel panel panel-default">
                     <div class="panel-heading">
-                        <h3 class="panel-title">Please Sign In</h3>
+                        <h3 class="panel-title">Change Password</h3>
                     </div>
-                     <?php echo validation_errors();?>
-                        <?php echo form_open(base_url().'index.php/signup_cont/checksignup'); ?>
-                        <div class="">
-                            <form role="form" action="">
-                                
+                    <?php echo validation_errors();?>
+                    <?php echo form_open( base_url().'index.php/login_cont/resetpassword'); ?>
+                    <div class="panel-body">
+                        <form role="form">
+                            <fieldset>
                                 <div class="form-group">
-                                    <label>Name</label>
-                                    <input name= "name" class="form-control">
-                                </div>
-                                 <div class="form-group">
-                                    <label>username</label>
-                                    <input name= "username" class="form-control" >
-                                </div>
-                                <div class="form-group">
-                                    <label> Password</label>
-                                    <input name= "pass1" type="Password" class="form-control" >
-                                </div>
-                                <div class="form-group">
-                                    <label>Retype Password</label>
-                                    <input name= "pass2" type="Password" class="form-control" >
-                                </div>
-                                <div class="form-group">
-                                    <label>E-mail id</label>
-                                    <input name= "email" class="form-control" >
+                                    <input class="form-control" placeholder="old password" name="password" type="password"  value="">
                                 </div>
                                
-                                
-                                
-                                <div class="col-lg-6">
-                                <button type="submit" class="btn btn-lg btn-success btn-block">signup</button>
+                                <div class="form-group">
+                                    <input class="form-control" placeholder="new Password" name="password" type="password" value="">
                                 </div>
-                                <div class="col-lg-6">
-                                <button type="reset" class="btn btn-lg btn-success btn-block">Reset </button>
+                                 <div class="form-group">
+                                    <input class="form-control" placeholder="confirm Password" name="password" type="password" value="">
                                 </div>
-                            </form>
-                        </div>
+                               
+                                <!--
+                                <div class="checkbox">
+                                    <label>
+                                        <input name="remember" type="checkbox" value="Remember Me">Remember Me
+                                    </label>
+                                </div>
+                                -->
+                                <!-- Change this to a button or input when using this as a form -->
+                                <input  name="login" class="btn btn-lg btn-success btn-block" value="submit" type="submit">
+                            </fieldset>
+                        </form>
 
+                    </div>
                 </div>
+                   <!-- <?php echo form_open( base_url()); ?>-->
+                
                    
                 
             </div>

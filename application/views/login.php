@@ -77,7 +77,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
                     </div>
                 </div>
-                    <?php echo form_open( base_url().'index.php/signup/loadview'); ?>
+                    <?php echo form_open( base_url().'index.php/signup_cont/loadview'); ?>
                 
                     <form role="form" >
                         <fieldset>

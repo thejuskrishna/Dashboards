@@ -1,5 +1,11 @@
 <?php
 class login_cont extends CI_Controller {
+	 function __construct() 
+    {
+        parent::__construct();
+        
+        $this->load->model('login_mod');
+    }
 public function index()
 	{
 		
@@ -20,18 +26,26 @@ public function index()
 		{	
 			$ret=$this->login_mod->check($username);
 			
-			echo $ret->username;
-			echo $ret->password;
-			echo $ret->flogin;
 			if($ret->flogin==1)
 			{
 				$ret=$this->login_mod->update_flag($username);
+				$this->session->set_userdata('username',$username);
+				$this->session->set_userdata('password',$password);
+				$this->load->view('firstlogin');
 			}
 			
 
-			//redirect(base_url().'index.php/studentsearch/asdfg/'.$usid);	
+			//redirect(base_url().'index.php/login_cont/checklogin/');	
 		}
 		
+	}
+	public function resetpassword()
+	{
+		$username = $this->session->userdata('username');
+		$password = $this->session->userdata('password');
+		echo $username;
+		echo $password;
+		//$this->login_mod->updatepassword($username,$password);
 	}
 	public function verifyuser()
 	{
