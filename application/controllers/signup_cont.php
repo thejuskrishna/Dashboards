@@ -32,10 +32,17 @@ public function index()
 		
 		else
 		{	
+			$username=$this->input->post('username');
+			$password=$this->input->post('pass1');
+
+			$salt = hash('sha256', uniqid(mt_rand(), true) . "somesalt" . strtolower($username));
+			$hash = $salt . $password;
+			$hash = hash('sha256', $hash);
+			$password=$salt.$hash;
 			
 			$data = array(
-				'username' => $this->input->post('username'),				
-				'password' => $this->input->post('pass1'),//$this->encrypt->encode($this->input->post('pass1')),
+				'username' => $username,				
+				'password' => $password,//$this->encrypt->encode($this->input->post('pass1'),'dilawz'),
 				'email' => $this->input->post('email'),
 				'flogin' => 1
 				);

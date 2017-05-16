@@ -57,6 +57,11 @@ public function index()
 		else
 		{
 
+		$salt = hash('sha256', uniqid(mt_rand(), true) . "somesalt" . strtolower($username));
+		$hash = $salt . $newpass;
+		$hash = hash('sha256', $hash);
+		$newpass=$salt.$hash;
+
 		$this->login_mod->updatepassword($username,$newpass);
 		$this->login_mod->update_flag($username);
 		$this->session->set_userdata('password',$newpass);
@@ -83,9 +88,15 @@ public function index()
 
 		$username = $this->input->post('username');
 		$password = $this->input->post('password');
-		$this->load->model('login_mod');
-		//$passworden=$this->encrypt->encode($password,'IQ7nigbuwcTWXJHxdkjwdgvdwYUDkDWU');
-		if($this->login_mod->login($username,$password)==true)
+		$ret=$this->login_mod->check($username);
+		$dbpassword=$ret->password;
+		$salt = substr($dbpassword, 0, 64);
+
+		$hash = $salt . $password;
+		$hash = hash('sha256', $hash);
+		$hash = $salt . $hash;
+		
+		if($dbpassword==$hash)
 		{
 			return true;
 				
