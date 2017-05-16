@@ -25,12 +25,13 @@ public function index()
 		else
 		{	
 			$ret=$this->login_mod->check($username);
+			$this->session->set_userdata('username',$username);
+			$this->session->set_userdata('password',$password);
 			
 			if($ret->flogin==1)
 			{
-				$ret=$this->login_mod->update_flag($username);
-				$this->session->set_userdata('username',$username);
-				$this->session->set_userdata('password',$password);
+				
+				
 				$this->load->view('firstlogin');
 			}
 			
@@ -55,9 +56,10 @@ public function index()
 	    }
 		else
 		{
-			echo $newpass;
-		$this->login_mod->update_flag($username);	
+
 		$this->login_mod->updatepassword($username,$newpass);
+		$this->login_mod->update_flag($username);
+		$this->session->set_userdata('password',$newpass);
 		//redirect()
 	    }
 	}
@@ -78,10 +80,11 @@ public function index()
 	}
 	public function verifyuser()
 	{
+
 		$username = $this->input->post('username');
 		$password = $this->input->post('password');
 		$this->load->model('login_mod');
-		
+		//$passworden=$this->encrypt->encode($password,'IQ7nigbuwcTWXJHxdkjwdgvdwYUDkDWU');
 		if($this->login_mod->login($username,$password)==true)
 		{
 			return true;

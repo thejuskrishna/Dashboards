@@ -35,12 +35,11 @@ public function index()
 			
 			$data = array(
 				'username' => $this->input->post('username'),				
-				'password' => $this->input->post('pass1'),
+				'password' => $this->input->post('pass1'),//$this->encrypt->encode($this->input->post('pass1')),
 				'email' => $this->input->post('email'),
 				'flogin' => 1
 				);
 			
-			echo "succ";
 			$this->signup_mod->createuser($data);
 			redirect(base_url().'index.php/login_cont/loginview');	
 		}
