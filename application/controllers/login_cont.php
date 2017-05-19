@@ -36,7 +36,7 @@ public function index()
 			}
 			
 
-			//redirect(base_url().'index.php/login_cont/checklogin/');	
+			redirect(base_url().'index.php/home_cont/homeview/');	
 		}
 		
 	}
