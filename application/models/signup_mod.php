@@ -20,4 +20,4 @@ class signup_mod extends CI_Model
    }
    
 }
-
+?>

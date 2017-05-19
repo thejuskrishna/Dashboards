@@ -45,11 +45,11 @@
        <span><br>Your Dashboard</span></font>
        </div></a>
       <div class="optionstack" style="background-color: black">
-      <a href="<?php echo base_url();?>index.php/" style="text-decoration: none;font-size:20px"><font color="grey">
+      <a href="<?php echo base_url();?>index.php/home_cont/connectdatabase" style="text-decoration: none;font-size:20px"><font color="grey">
        <span><br>Connect Your Databases</span></font>
        </div></a>
        <div class="optionstack" style="background-color: black">
-      <a href="<?php echo base_url();?>index.php/" style="text-decoration: none;font-size:20px"><font color="grey">
+      <a href="<?php echo base_url();?>index.php/home_cont/logout" style="text-decoration: none;font-size:20px"><font color="grey">
         <span><br>Logout</span></font>
        </div></a>
     </div>

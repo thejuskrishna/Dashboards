@@ -29,14 +29,13 @@ public function index()
 			$this->session->set_userdata('password',$password);
 			
 			if($ret->flogin==1)
-			{
-				
-				
+			{		
 				$this->load->view('firstlogin');
 			}
-			
-
-			redirect(base_url().'index.php/home_cont/homeview/');	
+			else
+			{
+				redirect(base_url().'index.php/home_cont/homeview/');	
+			}
 		}
 		
 	}
@@ -65,7 +64,7 @@ public function index()
 		$this->login_mod->updatepassword($username,$newpass);
 		$this->login_mod->update_flag($username);
 		$this->session->set_userdata('password',$newpass);
-		//redirect()
+		redirect(base_url().'index.php/home_cont/homeview/');
 	    }
 	}
 	public function checkpass()
