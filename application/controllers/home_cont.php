@@ -144,12 +144,12 @@ class home_cont extends CI_Controller
 			$hash = hash('sha256', $hash);
 			$password=$salt.$hash;*/
 			$this->load->library('encryption');
-			$password=$this->encryption->decrypt($password);
+			$epassword=$this->encryption->encrypt($password);
 			
 			$data = array(
 				'user'=>$username,
 				'username' => $dbusername,				
-				'password' => $password,
+				'password' => $epassword,
 				'host' => $host,
 				'data_base' => $database
 				);

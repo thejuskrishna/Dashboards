@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 19, 2017 at 01:05 PM
+-- Generation Time: May 29, 2017 at 01:56 PM
 -- Server version: 10.1.21-MariaDB
 -- PHP Version: 7.1.1
 
@@ -23,23 +23,25 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `database`
+-- Table structure for table `data_base`
 --
 
-CREATE TABLE `database` (
-  `user` varchar(256) NOT NULL,
-  `username` varchar(256) NOT NULL,
-  `password` varchar(256) NOT NULL,
+CREATE TABLE `data_base` (
+  `id` int(100) NOT NULL,
   `host` varchar(256) NOT NULL,
-  `database` varchar(256) NOT NULL
+  `password` varchar(256) NOT NULL,
+  `username` varchar(256) NOT NULL,
+  `user` varchar(256) NOT NULL,
+  `data_base` varchar(256) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `database`
+-- Dumping data for table `data_base`
 --
 
-INSERT INTO `database` (`user`, `username`, `password`, `host`, `database`) VALUES
-('ashik', 'q', '55f3806f5a192d59a8c7de9f9cbe29d61ee5a3381553fa97bedbff8732851103034298dd7be938bdadba1d2fcdc7e5212ccae25b3784e14f5bd42383313d3173', 'q', 'q');
+INSERT INTO `data_base` (`id`, `host`, `password`, `username`, `user`, `data_base`) VALUES
+(10, 'localhost', '615065f332d5a002e3034e3b2183acdaa9f55b30d9863f62d53867195b9ff7b5ac6fcbbd8330abeb2d41bf9d175e1597702129e92a8eaad6112a73c5cf46efc8wS1NWT7OhzrZKXyWM/0Qx2XOSok0j5UknSMeTH8OW2Y=', 'root', 'ashik', 'prorep'),
+(11, 'localhost', 'd2bda838125e636062a663052e7533c6e34bd769a50c84d27b28c84eea05a90c0503a01965cda80f47828a8a0f189f268a42eed956f68dc73e79a0eb95f0fcc5+RYlrnq4Di6Sb2d5z+aNa3XXJR2dxNqF2xqUPnrEOF4=', 'root', 'ashik', 'qwerty');
 
 -- --------------------------------------------------------
 
@@ -70,10 +72,10 @@ INSERT INTO `login` (`username`, `password`, `email`, `flogin`) VALUES
 --
 
 --
--- Indexes for table `database`
+-- Indexes for table `data_base`
 --
-ALTER TABLE `database`
-  ADD PRIMARY KEY (`user`,`database`);
+ALTER TABLE `data_base`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `login`
@@ -81,6 +83,15 @@ ALTER TABLE `database`
 ALTER TABLE `login`
   ADD PRIMARY KEY (`username`);
 
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `data_base`
+--
+ALTER TABLE `data_base`
+  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
