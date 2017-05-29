@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 19, 2017 at 12:49 PM
+-- Generation Time: May 19, 2017 at 01:05 PM
 -- Server version: 10.1.21-MariaDB
 -- PHP Version: 7.1.1
 
@@ -39,12 +39,7 @@ CREATE TABLE `database` (
 --
 
 INSERT INTO `database` (`user`, `username`, `password`, `host`, `database`) VALUES
-('ashik', 'Q', 'c98a0c9e2261b44349810cab88e5fd2c872fd42c88497ecc2fb957ae26fc4d66f9b52b1c0381ca6bdd2bea694b7c04c009e336e3e91e53f64d459e7a367adffc', 'Q', 'Q'),
-('ashik', 'A', 'a78101396a876a62ade0003e33183b93b1b0c74d05a56a67ce1ef41a8ea503d8d6a995f405a405b45629042fe8b2abef861a6ca238bb9289289b1748fa2162c2', 'A', 'A'),
-('ashik', 'Z', 'ed65af8cc55dc93a309f7ddd6a880aab1359bc492559cebc80fa79c408be867c778c2c101abf7986f4c112b8c6c0f4bb207116b36140303cfb2c829cced9c8ff', 'Z', 'Z'),
-('ashik', 'W', 'a20d6650db1bd223dd4987db0903ff300329c2470c0ccbd003609e3eaba3d0cf6f6f3d1ff73fac518f67ff6dec13433bc86506291ce9c37d61e6d153f394f2d6', 'W', 'W'),
-('ashik', 'q', 'e1f4990046f14b2763d630995eee3696c39650a58fa34b66babb3357365dfe0861652de4255b762be57ef298c1c06ad5deee09c8de33a240298eb5b7eff3aa54', 'q', 'qq'),
-('ashik', 'q', 'a1908faa2fde266e0205cb38cdebd55810c923cf18f66fd4b45a86c86863bcfb0dc731bb61fcf1581f1d1d6649c170f4960c293288ad4b165d11557681fcfb42', 'qq', 'q');
+('ashik', 'q', '55f3806f5a192d59a8c7de9f9cbe29d61ee5a3381553fa97bedbff8732851103034298dd7be938bdadba1d2fcdc7e5212ccae25b3784e14f5bd42383313d3173', 'q', 'q');
 
 -- --------------------------------------------------------
 
@@ -73,6 +68,12 @@ INSERT INTO `login` (`username`, `password`, `email`, `flogin`) VALUES
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `database`
+--
+ALTER TABLE `database`
+  ADD PRIMARY KEY (`user`,`database`);
 
 --
 -- Indexes for table `login`

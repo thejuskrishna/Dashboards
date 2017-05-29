@@ -36,7 +36,7 @@
        <span ><br>Create your dashboard</span></font>
        </div></a>
       <div class="optionstack" style="background-color: black">
-      <a href="<?php echo base_url();?>index.php/" style="text-decoration: none;font-size:20px"><font color="grey">
+      <a href="<?php echo base_url();?>index.php/home_cont/viewdatabase" style="text-decoration: none;font-size:20px"><font color="grey">
        <span><br>Your Databases</span></font>
        </div></a>
       
