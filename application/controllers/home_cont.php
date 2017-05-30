@@ -15,7 +15,7 @@ class home_cont extends CI_Controller
 	{
 		if($this->session->has_userdata('username'))
 		{
-			$this->load->view('basic_form');
+			$this->load->view('home');
 		}
 		else
 		{
@@ -31,11 +31,11 @@ class home_cont extends CI_Controller
 	{
 		if(!$this->session->has_userdata('username'))
 		{
-			redirect(base_url().'index.php/login_cont/loginview');
+			redirect(base_url().'index.php/home_cont/homeview');
 		}
 		else
 		{
-			$this->load->view('connectdb');
+			$this->load->view('basic_form');
 		}
 
 	}

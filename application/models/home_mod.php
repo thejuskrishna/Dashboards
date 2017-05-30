@@ -29,10 +29,10 @@ class home_mod extends CI_Model
       $res=$this->db->query('SELECT * FROM data_base WHERE id =\''.$id.'\'');
       return $res->row();
    }
-    public function select($dynamicDB, $id) {
-  $dynamicDB = $this->load->database($dynamicDB, TRUE);
-  $tables = $dynamicDB->list_tables();
-  $table_data = array();
+  public function select($dynamicDB, $id) {
+       $dynamicDB = $this->load->database($dynamicDB, TRUE);
+       $tables = $dynamicDB->list_tables();
+       $table_data = array();
   foreach ($tables as $table)
   {
       //echo $table."\r\n";
