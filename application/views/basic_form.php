@@ -260,7 +260,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <img src="dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
-              <span class="hidden-xs">Alexander Pierce</span>
+              <span class="hidden-xs"><?php echo $this->session->userdata('username')?></span>
             </a>
             <ul class="dropdown-menu">
               <!-- User image -->
@@ -268,7 +268,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
 
                 <p>
-                  Alexander Pierce - Web Developer
+                  <?php echo $this->session->userdata('username')?> - Web Developer
                   <small>Member since Nov. 2012</small>
                 </p>
               </li>
@@ -316,7 +316,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
           <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
         </div>
         <div class="pull-left info">
-          <p>Alexander Pierce</p>
+          <p><?php echo $this->session->userdata('username')?></p>
           <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
         </div>
       </div>
@@ -538,7 +538,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <p class="message">
                   <a href="#" class="name">
                     <small class="text-muted pull-right"><i class="fa fa-clock-o"></i> 5:15</small>
-                    Alexander Pierce
+                    <?php echo $this->session->userdata('username')?>
                   </a>
                   I would like to meet you to discuss the latest news about
                   the arrival of the new theme. They say it is going to be one the
