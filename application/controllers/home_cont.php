@@ -15,7 +15,7 @@ class home_cont extends CI_Controller
 	{
 		if($this->session->has_userdata('username'))
 		{
-			$this->load->view('home');
+			$this->load->view('basic_form');
 		}
 		else
 		{
