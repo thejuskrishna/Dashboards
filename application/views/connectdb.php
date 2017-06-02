@@ -426,7 +426,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                     <input name= "database" class="form-control" >
                                 </div>
             <div class="box-footer clearfix">
-              <button type="button" class="pull-right btn btn-default" id="sendEmail">submit
+              <button type="submit" class="pull-right btn btn-default" id="sendEmail">submit
                 <i class="fa fa-arrow-circle-right"></i></button>
             </div>
             </form>
