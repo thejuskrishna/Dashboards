@@ -38,7 +38,7 @@ class home_cont extends CI_Controller
 		}
 		else
 		{
-			$this->load->view('basic_form');
+			$this->load->view('connectdb');
 		}
 
 	}
