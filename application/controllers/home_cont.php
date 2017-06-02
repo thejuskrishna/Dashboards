@@ -17,7 +17,7 @@ class home_cont extends CI_Controller
 		{
 			$username = $this->session->userdata('username');
 			$dbs = $this->home_mod->viewdb($username);
-			$this->session->set_userdata('dbs',$dbs);
+			$this->session->set_flashdata('dbs',$dbs);
 			$this->load->view('basic_form');
 		}
 		else
@@ -80,7 +80,7 @@ class home_cont extends CI_Controller
 			$username = $this->session->userdata('username');
 			$this->home_mod->deletedb($id,$username);
 			$dbs = $this->home_mod->viewdb($username);
-			$this->session->set_userdata('dbs',$dbs);
+			$this->session->set_flashdata('dbs',$dbs);
 			$this->load->view('viewdb');
 			
 		}
