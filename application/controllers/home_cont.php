@@ -11,6 +11,10 @@ class home_cont extends CI_Controller
 	{
 		
 	}
+	public function template()
+	{
+			$this->load->view('template');
+	}
 	public function homeview()
 	{
 		if($this->session->has_userdata('username'))
@@ -38,6 +42,9 @@ class home_cont extends CI_Controller
 		}
 		else
 		{
+			$username = $this->session->userdata('username');
+			$dbs = $this->home_mod->viewdb($username);
+			$this->session->set_flashdata('dbs',$dbs);
 			$this->load->view('connectdb');
 		}
 
@@ -131,6 +138,9 @@ class home_cont extends CI_Controller
 		$this->form_validation->set_rules('database','DB database','required');
 		if($this->form_validation->run()==false)
 		{
+			$username = $this->session->userdata('username');
+			$dbs = $this->home_mod->viewdb($username);
+			$this->session->set_flashdata('dbs',$dbs);
 			$this->load->view('connectdb');
 		}
 		else
