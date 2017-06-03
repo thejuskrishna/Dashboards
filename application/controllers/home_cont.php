@@ -121,7 +121,7 @@ class home_cont extends CI_Controller
 		    $this->load->model('home_mod');
  			$table_data = $this->home_mod->select($this->dynamicDB,123);
  			$this->session->set_flashdata('table_data',$table_data);
-			$this->load->view('database_structure');
+			$this->load->view('yourdb');
 			
 		}
 		else
