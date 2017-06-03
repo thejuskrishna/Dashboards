@@ -14,6 +14,39 @@ class home_mod extends CI_Model
      $this->db->insert('data_base', $data);
 
    }
+   public function table_delete($dynamicDB,$table)
+    {
+      $dynamicDB = $this->load->database($dynamicDB, TRUE);      
+      $this->myforge = $this->load->dbforge($dynamicDB, TRUE);
+      /*$fields = array(
+        'blog_id' => array('type' => 'INT','constraint' => 5,'unsigned' => TRUE),
+        'blog_title' => array('type' => 'VARCHAR','constraint' => '100','unique' => TRUE),
+        'blog_author' => array('type' =>'VARCHAR','constraint' => '100','default' => 'King of Town'),
+        'blog_description' => array('type' => 'TEXT','null' => TRUE 
+        );
+      $this->myforge->add_field($fields);*/
+      $this->myforge->drop_table($table);
+    }
+    public function field_delete($dynamicDB,$table,$field)
+    {
+      $dynamicDB = $this->load->database($dynamicDB, TRUE);      
+      $this->myforge = $this->load->dbforge($dynamicDB, TRUE);
+      
+      $this->myforge->drop_column($table,$field);
+    }
+    public function database_delete($dynamicDB,$data_base)
+    {
+      $dynamicDB = $this->load->database($dynamicDB, TRUE);      
+      $this->myforge = $this->load->dbforge($dynamicDB, TRUE);
+      $this->myforge->drop_database($data_base);
+    }
+    public function field_add($dynamicDB,$table,$field)
+    {
+      $dynamicDB = $this->load->database($dynamicDB, TRUE);      
+      $this->myforge = $this->load->dbforge($dynamicDB, TRUE);
+      
+      $this->myforge->add_column($table,$field);
+    }
     public function viewdb($username)
    {
      $res=$this->db->query('SELECT * FROM data_base WHERE user =\''.$username.'\'');

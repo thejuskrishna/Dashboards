@@ -118,6 +118,7 @@ class home_cont extends CI_Controller
 						            'db_debug' => TRUE
 								  
 								  );
+		    $this->session->set_userdata('dynamicDB',$this->dynamicDB);
 		    $this->load->model('home_mod');
  			$table_data = $this->home_mod->select($this->dynamicDB,123);
  			$this->session->set_flashdata('table_data',$table_data);
@@ -150,12 +151,6 @@ class home_cont extends CI_Controller
 			$password=$this->input->post('password');
 			$database=$this->input->post('database');
 			$username=$this->session->userdata('username');
-
-
-			/*$salt = hash('sha256', uniqid(mt_rand(), true) . "somesalt" . strtolower($dbusername));
-			$hash = $salt . $password;
-			$hash = hash('sha256', $hash);
-			$password=$salt.$hash;*/
 			$this->load->library('encryption');
 			$epassword=$this->encryption->encrypt($password);
 			
@@ -171,5 +166,32 @@ class home_cont extends CI_Controller
 			redirect(base_url().'index.php/home_cont/homeview');
 		}
 	}
+	public function database_delete($data_base)
+	{
+		$this->dynamicDB = $this->session->userdata('dynamicDB');
+		$this->home_mod->database_delete($this->dynamicDB,$data_base);
+	}
+	public function table_delete($table)
+	{
+		$this->dynamicDB = $this->session->userdata('dynamicDB');
+		$this->home_mod->table_delete($this->dynamicDB,$table);
+	}
+	public function field_delete($table,$field)
+	{
+		$this->dynamicDB = $this->session->userdata('dynamicDB');
+		$this->home_mod->field_delete($this->dynamicDB,$table,$field);
+	}
+	public function field_add($table)
+	{
+		$field = array(
+        'fnme' => array('type' => 'INT','constraint' => 5,'unsigned' => TRUE),
+        'blog_title' => array('type' => 'VARCHAR','constraint' => '100','unique' => TRUE),
+        'blog_author' => array('type' =>'VARCHAR','constraint' => '100','default' => 'King of Town'),
+        'blog_description' => array('type' => 'TEXT','null' => TRUE)
+        );
+		$this->dynamicDB = $this->session->userdata('dynamicDB');
+		$this->home_mod->field_add($this->dynamicDB,$table,$field);
+	}
+
 }
 ?>
