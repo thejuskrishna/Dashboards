@@ -445,7 +445,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                   <span class="text"><?php echo $table?></span>
                    
                    
-              <a href="<?php echo base_url()?>'index.php/home_cont/deletedb/'" class="pull-right" style="color: black;">
+              <a href="<?php echo base_url().'index.php/home_cont/table_delete/'.$table?>" class="pull-right" style="color: black;">
                    <button type="button" class="pull-right">
                     <i class="fa fa-minus-circle " style="color: black"></i>Drop
                                        </button></a>
@@ -454,7 +454,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                    <button type="button" class="pull-right">
                     <i class="fa fa-trash-o" style="color: black;"></i>Delete
                     </button></a>
-               <a href="<?php echo base_url()?>'index.php/insert_cont/addcolumn/'" class="pull-right" style="color: black;">     
+               <a href="<?php echo base_url()?>'index.php/home_cont/field_add/'" class="pull-right" style="color: black;">     
                     <button type="button " class="pull-right" > 
                     <i class="fa fa-edit" style="color: black"></i>Insert
                                       </button></a>

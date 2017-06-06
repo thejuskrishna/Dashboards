@@ -4,7 +4,7 @@ class home_mod extends CI_Model
 	   function __construct() 
     {
         parent::__construct();
-        
+        $this->load->database();
         
     }
    
@@ -18,6 +18,10 @@ class home_mod extends CI_Model
     {
       $dynamicDB = $this->load->database($dynamicDB, TRUE);      
       $this->myforge = $this->load->dbforge($dynamicDB, TRUE);
+      if($this->myforge)
+      {
+        echo "vcdew";
+      }
       /*$fields = array(
         'blog_id' => array('type' => 'INT','constraint' => 5,'unsigned' => TRUE),
         'blog_title' => array('type' => 'VARCHAR','constraint' => '100','unique' => TRUE),

@@ -173,6 +173,7 @@ class home_cont extends CI_Controller
 	}
 	public function table_delete($table)
 	{
+		
 		$this->dynamicDB = $this->session->userdata('dynamicDB');
 		$this->home_mod->table_delete($this->dynamicDB,$table);
 	}
