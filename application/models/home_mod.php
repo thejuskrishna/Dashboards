@@ -20,7 +20,7 @@ class home_mod extends CI_Model
       $this->myforge = $this->load->dbforge($dynamicDB, TRUE);
       if($this->myforge)
       {
-        echo "vcdew";
+        echo "hello";
       }
       /*$fields = array(
         'blog_id' => array('type' => 'INT','constraint' => 5,'unsigned' => TRUE),
@@ -44,6 +44,8 @@ class home_mod extends CI_Model
       $this->myforge = $this->load->dbforge($dynamicDB, TRUE);
       $this->myforge->drop_database($data_base);
     }
+
+
     public function field_add($dynamicDB,$table,$field)
     {
       $dynamicDB = $this->load->database($dynamicDB, TRUE);      
@@ -51,6 +53,9 @@ class home_mod extends CI_Model
       
       $this->myforge->add_column($table,$field);
     }
+
+
+    
     public function viewdb($username)
    {
      $res=$this->db->query('SELECT * FROM data_base WHERE user =\''.$username.'\'');

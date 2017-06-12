@@ -123,6 +123,7 @@ class home_cont extends CI_Controller
  			$table_data = $this->home_mod->select($this->dynamicDB,123);
  			$this->session->set_flashdata('table_data',$table_data);
 			$this->load->view('yourdb');
+			$this->session->set_userdata('id',$id);
 			
 		}
 		else
@@ -130,6 +131,11 @@ class home_cont extends CI_Controller
 			redirect(base_url().'index.php/login_cont/loginview');
 		}
 		
+	}
+	public function insertfield($table)
+	{
+		$this->session->set_flashdata('table',$table);
+		$this->load->view('insert');
 	}
 	public function checkconnect()
 	{
@@ -171,27 +177,63 @@ class home_cont extends CI_Controller
 		$this->dynamicDB = $this->session->userdata('dynamicDB');
 		$this->home_mod->database_delete($this->dynamicDB,$data_base);
 	}
-	public function table_delete($table)
+	public function table_delete($table,$id)
 	{
-		
-		$this->dynamicDB = $this->session->userdata('dynamicDB');
+		 $dbinfo = $this->home_mod->getentry($id);
+		      $this->load->library('encryption');
+		      $pwd = $this->encryption->decrypt($dbinfo->password);
+		      $this->dynamicDB = array(
+								   'hostname' => $dbinfo->host,
+						            'username' => $dbinfo->username,
+						            'password' => $pwd,
+						            'database' => $dbinfo->data_base,
+						            'dbdriver' => 'mysqli',
+						            'dbprefix' => '',
+						            'pconnect' => FALSE,
+						            'db_debug' => TRUE
+								  
+								  );
+		//$this->dynamicDB = $this->session->userdata('dynamicDB');
 		$this->home_mod->table_delete($this->dynamicDB,$table);
+		redirect(base_url().'index.php/home_cont/homeview');
 	}
 	public function field_delete($table,$field)
 	{
 		$this->dynamicDB = $this->session->userdata('dynamicDB');
 		$this->home_mod->field_delete($this->dynamicDB,$table,$field);
 	}
-	public function field_add($table)
+	public function field_add($table,$id)
 	{
-		$field = array(
-        'fnme' => array('type' => 'INT','constraint' => 5,'unsigned' => TRUE),
-        'blog_title' => array('type' => 'VARCHAR','constraint' => '100','unique' => TRUE),
+	   
+        $name=$this->input->post('Name');
+        $length=$this->input->post('Length');
+        $type=$this->input->post('Type');
+
+        $field = array(
+        $name => array('type' => $type,'constraint' => $length));
+       /*'blog_title' => array('type' => 'VARCHAR','constraint' => '100','unique' => TRUE),
         'blog_author' => array('type' =>'VARCHAR','constraint' => '100','default' => 'King of Town'),
-        'blog_description' => array('type' => 'TEXT','null' => TRUE)
-        );
-		$this->dynamicDB = $this->session->userdata('dynamicDB');
-		$this->home_mod->field_add($this->dynamicDB,$table,$field);
+        'blog_description' => array('type' => 'TEXT','null' => TRUE)*/
+        
+
+        
+
+        $dbinfo = $this->home_mod->getentry($id);
+		      $this->load->library('encryption');
+		      $pwd = $this->encryption->decrypt($dbinfo->password);
+		      $this->dynamicDB = array(
+								   'hostname' => $dbinfo->host,
+						            'username' => $dbinfo->username,
+						            'password' => $pwd,
+						            'database' => $dbinfo->data_base,
+						            'dbdriver' => 'mysqli',
+						            'dbprefix' => '',
+						            'pconnect' => FALSE,
+						            'db_debug' => TRUE
+								  
+								  );
+		//$this->dynamicDB = $this->session->userdata('dynamicDB');
+		$this->home_mod->field_add($this->dynamicDB,$table,$name);
 	}
 
 }
