@@ -433,7 +433,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <?php
                 $table_data = $this->session->flashdata('table_data');
                  $id=$this->session->userdata('id');
-                  echo "id".$id;
+                  //echo "id".$id;
                 foreach ($table_data as $table => $fields) 
                 {
                    
@@ -458,11 +458,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     <i class="fa fa-edit" style="color: black"></i>Insert
                                       </button></a>
 
-               <a href="<?php echo base_url()?>'index.php/home_cont/deletedb/'" class="pull-right" style="color: black;"> 
-                   <button type="button" class="pull-right">
-                    <i class="fa fa-trash-o" style="color: black;"></i>Delete
-                    </button></a>
-               
+              
                                      
                    
                 
@@ -478,8 +474,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                        ?> 
                         
                     
-                   <input type="checkbox" value="">
-                   <span class="text-pull-center"><?php echo $field?></span><br>
+                   
+                   <span class="text-pull-center"><?php echo $field   ?></span>
+                    <a href="<?php echo base_url().'index.php/home_cont/field_delete/'.$id.'/'.$table.'/'.$field?>"  style="color: black;"> 
+                   <button type="button" >
+                    <i class="fa fa-trash-o" style="color: black;"></i>Delete
+                    </button></a>
+                    <br>
                 <?php
                 }
                 }
@@ -500,49 +501,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
           <!-- Map box -->
           
-          <!-- solid sales graph -->
-          <div class="box box-solid bg-teal-gradient">
-            <div class="box-header">
-              <i class="fa fa-th"></i>
-
-              <h3 class="box-title">Sales Graph</h3>
-
-              <div class="box-tools pull-right">
-                <button type="button" class="btn bg-teal btn-sm" data-widget="collapse"><i class="fa fa-minus"></i>
-                </button>
-                <button type="button" class="btn bg-teal btn-sm" data-widget="remove"><i class="fa fa-times"></i>
-                </button>
-              </div>
-            </div>
-            <div class="box-body border-radius-none">
-              <div class="chart" id="line-chart" style="height: 250px;"></div>
-            </div>
-            <!-- /.box-body -->
-            <div class="box-footer no-border">
-              <div class="row">
-                <div class="col-xs-4 text-center" style="border-right: 1px solid #f4f4f4">
-                  <input type="text" class="knob" data-readonly="true" value="20" data-width="60" data-height="60" data-fgColor="#39CCCC">
-
-                  <div class="knob-label">Mail-Orders</div>
-                </div>
-                <!-- ./col -->
-                <div class="col-xs-4 text-center" style="border-right: 1px solid #f4f4f4">
-                  <input type="text" class="knob" data-readonly="true" value="50" data-width="60" data-height="60" data-fgColor="#39CCCC">
-
-                  <div class="knob-label">Online</div>
-                </div>
-                <!-- ./col -->
-                <div class="col-xs-4 text-center">
-                  <input type="text" class="knob" data-readonly="true" value="30" data-width="60" data-height="60" data-fgColor="#39CCCC">
-
-                  <div class="knob-label">In-Store</div>
-                </div>
-                <!-- ./col -->
-              </div>
-              <!-- /.row -->
-            </div>
-            <!-- /.box-footer -->
-          </div>
+    
           <!-- /.box -->
 
           <!-- Calendar -->

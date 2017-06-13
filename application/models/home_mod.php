@@ -33,6 +33,7 @@ class home_mod extends CI_Model
     }
     public function field_delete($dynamicDB,$table,$field)
     {
+      //echo "db".$dynamicDB['database'];
       $dynamicDB = $this->load->database($dynamicDB, TRUE);      
       $this->myforge = $this->load->dbforge($dynamicDB, TRUE);
       
