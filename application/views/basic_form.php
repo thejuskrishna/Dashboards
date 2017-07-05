@@ -355,6 +355,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <i class="fa fa-th"></i> <span>Create Dashboards</span>
           </a>
         </li>
+         
          <li>
           <a href="<?php echo base_url();?>index.php/home_cont/connectdatabase">
             <i class="fa fa-th"></i> <span>Connect Database</span>

@@ -11,6 +11,10 @@ class home_cont extends CI_Controller
 	{
 		
 	}
+	public function dummy()
+	{
+			$this->load->view('dummy');
+	}
 	public function template()
 	{
 			$this->load->view('template');
