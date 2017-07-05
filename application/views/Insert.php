@@ -413,7 +413,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                 
                                 <div class="form-group">
                                     <label>Field Name</label>
-                                    <input name= "Name" class="form-control">
+                                    <input name= "name" class="form-control">
                                 </div>
                                  <div class="form-group">
                                     <label>Length</label>

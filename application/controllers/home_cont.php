@@ -199,22 +199,38 @@ class home_cont extends CI_Controller
 								  );
 		//$this->dynamicDB = $this->session->userdata('dynamicDB');
 		$this->home_mod->table_delete($this->dynamicDB,$table);
-		redirect(base_url().'index.php/home_cont/homeview');
+		redirect(base_url().'index.php/home_cont/diplaydb/'.$id);
 	}
-	public function field_delete($table,$field)
-	{
-		$this->dynamicDB = $this->session->userdata('dynamicDB');
+	public function field_delete($id,$table,$field)
+	{	
+	$dbinfo = $this->home_mod->getentry($id);
+    $this->load->library('encryption');
+    $pwd = $this->encryption->decrypt($dbinfo->password);
+    //echo $dbinfo->data_base;
+    $this->dynamicDB = array(
+						   'hostname' => $dbinfo->host,
+				            'username' => $dbinfo->username,
+				            'password' => $pwd,
+				            'database' => $dbinfo->data_base,
+				            'dbdriver' => 'mysqli',
+				            'dbprefix' => '',
+				            'pconnect' => FALSE,
+				            'db_debug' => TRUE
+						  
+						  );
 		$this->home_mod->field_delete($this->dynamicDB,$table,$field);
+		redirect(base_url().'index.php/home_cont/diplaydb/'.$id);
 	}
 	public function field_add($table,$id)
 	{
 	   
-        $name=$this->input->post('Name');
-        $length=$this->input->post('Length');
-        $type=$this->input->post('Type');
-
+        $name=$this->input->post('name');
+        $length=$this->input->post('length');
+        $type=$this->input->post('type');
+        echo $name.$type;
         $field = array(
-        $name => array('type' => $type,'constraint' => $length));
+        	$name => array('type' => $type,'constraint'=>$length)
+        	);
        /*'blog_title' => array('type' => 'VARCHAR','constraint' => '100','unique' => TRUE),
         'blog_author' => array('type' =>'VARCHAR','constraint' => '100','default' => 'King of Town'),
         'blog_description' => array('type' => 'TEXT','null' => TRUE)*/
@@ -237,7 +253,9 @@ class home_cont extends CI_Controller
 								  
 								  );
 		//$this->dynamicDB = $this->session->userdata('dynamicDB');
-		$this->home_mod->field_add($this->dynamicDB,$table,$name);
+		$this->home_mod->field_add($this->dynamicDB,$table,$field);
+		redirect(base_url().'index.php/home_cont/diplaydb/'.$id);
+
 	}
 
 }
