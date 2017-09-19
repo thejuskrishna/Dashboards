@@ -344,10 +344,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="pages/layout/top-nav.html"><i class="fa fa-circle-o"></i> Top Navigation</a></li>
-            <li><a href="pages/layout/boxed.html"><i class="fa fa-circle-o"></i> Boxed</a></li>
-            <li><a href="pages/layout/fixed.html"><i class="fa fa-circle-o"></i> Fixed</a></li>
-            <li><a href="pages/layout/collapsed-sidebar.html"><i class="fa fa-circle-o"></i> Collapsed Sidebar</a></li>
+            <?php
+          $dbs=$this->session->flashdata('dbs');
+          foreach($dbs as $row)
+          {
+            echo "<li><a href=".base_url().'index.php/home_cont/displaydb/'.$row->id."><i class=\"fa fa-circle-o\"></i>".$row->host.'/'.$row->data_base."</a></li>";
+          }?>
           </ul>
         </li>
         <li>

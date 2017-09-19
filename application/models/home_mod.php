@@ -88,6 +88,36 @@ class home_mod extends CI_Model
   return $table_data;
   
  }
+ public function select_int_tables($dynamicDB, $table) {
+       $dynamicDB = $this->load->database($dynamicDB, TRUE);
+       $tables = $dynamicDB->list_tables();
+       
+      //echo $table."\r\n";
+      
+      $field_data= array();
+      
+        $fields = $dynamicDB->field_data($table);
+
+        foreach ($fields as $field)
+        {
+          if($field->type=='int')
+          {
+                $field_data[$field->name]=$field->type;
+
+          }
+
+        }
+  return $field_data;
+  
+ }
+ public function select_all($dynamicDB, $table) {
+       $dynamicDB = $this->load->database($dynamicDB, TRUE);
+       $tables = $dynamicDB->list_tables();
+        $res=$dynamicDB->query('SELECT * FROM '.$table);
+     return $res->result_array();
+    
+  
+ }
    public function test($id)
    {
        $dbinfo = $this->home_mod->getentry($id);

@@ -136,6 +136,79 @@ class home_cont extends CI_Controller
 		}
 		
 	}
+	public function displaydb($id)
+	{
+		if($this->session->has_userdata('username'))
+		{
+			$username = $this->session->userdata('username');
+			
+
+		      $dbinfo = $this->home_mod->getentry($id);
+		      $this->load->library('encryption');
+		      $pwd = $this->encryption->decrypt($dbinfo->password);
+		      $this->dynamicDB = array(
+								   'hostname' => $dbinfo->host,
+						            'username' => $dbinfo->username,
+						            'password' => $pwd,
+						            'database' => $dbinfo->data_base,
+						            'dbdriver' => 'mysqli',
+						            'dbprefix' => '',
+						            'pconnect' => FALSE,
+						            'db_debug' => TRUE
+								  
+								  );
+		    $this->session->set_userdata('dynamicDB',$this->dynamicDB);
+		    $this->load->model('home_mod');
+ 			$table_data = $this->home_mod->select($this->dynamicDB,123);
+ 			$this->session->set_flashdata('table_data',$table_data);
+			$this->session->set_userdata('id',$id);
+			$this->load->view('dashboarddb');
+			
+			
+		}
+		else
+		{
+			redirect(base_url().'index.php/login_cont/loginview');
+		}
+	}
+	public function show_graph($table,$id)
+	{
+		if($this->session->has_userdata('username'))
+		{
+			$username = $this->session->userdata('username');
+			
+			
+
+		      $dbinfo = $this->home_mod->getentry($id);
+		      $this->load->library('encryption');
+		      $pwd = $this->encryption->decrypt($dbinfo->password);
+		      $this->dynamicDB = array(
+								   'hostname' => $dbinfo->host,
+						            'username' => $dbinfo->username,
+						            'password' => $pwd,
+						            'database' => $dbinfo->data_base,
+						            'dbdriver' => 'mysqli',
+						            'dbprefix' => '',
+						            'pconnect' => FALSE,
+						            'db_debug' => TRUE
+								  
+								  );
+		    $this->session->set_userdata('dynamicDB',$this->dynamicDB);
+		    $this->load->model('home_mod');
+ 			$field_data = $this->home_mod->select_int_tables($this->dynamicDB,$table);
+ 			$contents = $this->home_mod->select_all($this->dynamicDB,$table);
+ 			$this->session->set_flashdata('field_data',$field_data);
+ 			$this->session->set_flashdata('table',$table);
+ 			$this->session->set_flashdata('contents',$contents);
+			$this->session->set_userdata('id',$id);
+			$this->load->view('graphplot');
+			
+		}
+		else
+		{
+			redirect(base_url().'index.php/login_cont/loginview');
+		}
+	}
 	public function insertfield($table)
 	{
 		$this->session->set_flashdata('table',$table);

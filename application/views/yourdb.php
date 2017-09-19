@@ -439,11 +439,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                    
                     ?>
                 <li>
-                  <!-- drag handle -->
-                      
-                  <!-- checkbox -->
-                 
-                  <!-- todo text -->
                   <span class="text"><?php echo $table?></span>
                    
               
